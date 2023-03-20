@@ -38,7 +38,10 @@ export const booksSlice = createSlice({
                 state.books = payload.items
                 return
             }
-            state.books = payload.items.filter(book => book.volumeInfo.categories?.map(el => el.toLowerCase()).includes(state.filters))
+            state.books = payload.items
+                .filter(book => book.volumeInfo.categories
+                    ?.map(el => el.toLowerCase())
+                    .includes(state.filters))
         })
         builder.addCase(fetchBooks.rejected, (state) => {
             state.loading = false
