@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import styles from './myToggle.module.scss'
-import {sortByType} from "../../../store/slice/sortFilter/sortFilterType";
+import {sortByType} from "../../../store/slice/sort/sortType";
 
 
 interface myToggleProps {

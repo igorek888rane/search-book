@@ -1,6 +1,6 @@
 import {ChangeEvent, FC} from 'react'
 import styles from './mySelect.module.scss'
-import {filtersType} from "../../../store/slice/sortFilter/sortFilterType";
+import {filtersType} from "../../../store/slice/books/booksType";
 
 interface mySelectProps {
     defaultValue: string

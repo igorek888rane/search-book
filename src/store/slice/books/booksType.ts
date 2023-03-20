@@ -1,3 +1,7 @@
+export type filtersType = 'all' | 'art' | 'biography' | 'computers' | 'history' | 'medical' | 'poetry'
+
+
+
 export interface IBook {
     kind: string,
     id: string,

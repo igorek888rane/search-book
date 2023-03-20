@@ -8,7 +8,7 @@ import {fetchBooks} from "../../store/slice/books/booksAsyncThunk";
 const Form: FC = () => {
     const [search, setSearch] = useState<string>('')
     const dispatch = useAppDispatch()
-    const {sortBy} = useAppSelector(state => state.sortFilter)
+    const {sortBy} = useAppSelector(state => state.sort)
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         dispatch(fetchBooks(({search, sortBy})))

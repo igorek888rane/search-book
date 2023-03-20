@@ -1,5 +1,5 @@
 import axios from "axios";
-import {sortByType} from "../store/slice/sortFilter/sortFilterType";
+import {sortByType} from "../store/slice/sort/sortType";
 import {IBook} from "../store/slice/books/booksType";
 
 
