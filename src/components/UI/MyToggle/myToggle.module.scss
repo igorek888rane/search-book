@@ -1,0 +1,24 @@
+@import "src/styles/variable";
+
+.myToggle {
+  display: flex;
+  grid-gap: 10px;
+
+  .myToggleEl {
+    padding: 10px 15px;
+    cursor: pointer;
+    opacity: 0.2;
+    border: 1px solid $colorEl;
+    background-color: transparent;
+    color: $colorEl;
+
+    &:hover {
+      background-color: $colorEl;
+      color: $backgroundColorBody
+    }
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}

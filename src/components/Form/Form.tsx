@@ -2,19 +2,22 @@ import {FC, FormEvent, useState} from 'react';
 import styles from './Form.module.scss'
 import MyInput from "../UI/MyInput/MyInput";
 import MyButton from "../UI/MyButton/MyButton";
-import {booksApi} from "../../api/booksApi";
+import {useAppDispatch, useAppSelector} from "../../hook/useApp";
+import {fetchBooks} from "../../store/slice/books/booksAsyncThunk";
 
 const Form: FC = () => {
     const [search, setSearch] = useState<string>('')
+    const dispatch = useAppDispatch()
+    const {sortBy} = useAppSelector(state => state.sortFilter)
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const res = await booksApi(search)
-        console.log(res);
+        dispatch(fetchBooks(({search, sortBy})))
         setSearch('')
     }
+
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
-            <MyInput value={search} handleChange={setSearch}/>
+            <MyInput placeholder={'Enter book tittle'} value={search} handleChange={setSearch}/>
             <MyButton type={'submit'}>Search</MyButton>
         </form>
     );

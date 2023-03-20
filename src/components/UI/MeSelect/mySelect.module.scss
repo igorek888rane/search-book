@@ -1,0 +1,14 @@
+@import "src/styles/variable";
+
+.mySelect {
+  padding: 5px 10px;
+  background: transparent;
+  color: $colorEl;
+  border: 1px solid $colorEl;
+  outline: none;
+  font-size: 12px;
+
+  option {
+    font-size: 12px;
+  }
+}
