@@ -1,0 +1,9 @@
+@import "src/styles/variable";
+
+.myBtn {
+  background: transparent;
+  color: $colorEl;
+  border: 1px solid;
+  padding: 5px;
+  cursor: pointer;
+}

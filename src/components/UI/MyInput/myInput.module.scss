@@ -1,0 +1,10 @@
+@import "src/styles/variable";
+
+.myInput {
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+  color: $colorEl;
+  border: 1px solid;
+  padding: 10px;
+}

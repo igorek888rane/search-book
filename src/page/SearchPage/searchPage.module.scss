@@ -1,0 +1,7 @@
+@import "src/styles/variable";
+
+.search__page {
+  display: flex;
+  flex-direction: column;
+  background-color: $colorContainer;
+}
