@@ -14,11 +14,11 @@ const SortFilter: FC = () => {
 
     return (
         <div className={styles.sort_filter}>
-            <MyToggle fn={(sortValue: sortByType) => dispatch(setSortBy(sortValue))}
+            <MyToggle fn={(sortValue: string) => dispatch(setSortBy(sortValue as sortByType))}
                       toggleActive={sortBy}
                       toggles={['newest', 'relevance']}/>
             <MySelect defaultValue={'all'}
-                      setSelect={(value: filtersType) => dispatch(setFilter(value))}
+                      setSelect={(value: string) => dispatch(setFilter(value as filtersType))}
                       options={['all', 'art', 'biography', 'computers', 'history', 'medical', 'poetry']}/>
         </div>
     );

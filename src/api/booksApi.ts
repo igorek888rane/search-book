@@ -10,11 +10,13 @@ export interface IBooksApi {
 
 export interface IData {
     items: IBook[]
-    kind:string
-    totalItems:number
+    kind: string
+    totalItems: number
 }
 
+const API = 'https://www.googleapis.com/books/v1/volumes'
+
 export const booksApi = async ({search, sortBy}: IBooksApi) => {
-    const {data} = await axios.get<IData>(`${process.env.REACT_APP_API}?q=${search}&maxResults=30&orderBy=${sortBy}&key=${process.env.REACT_APP_API_KEY}`)
+    const {data} = await axios.get<IData>(`${API}?q=${search}&maxResults=30&orderBy=${sortBy}&key=${process.env.REACT_APP_API_KEY}`)
     return data
 }

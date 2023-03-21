@@ -2,22 +2,22 @@ import {FC} from 'react';
 import styles from './Books.module.scss'
 import {useAppSelector} from "../../hook/useApp";
 import Loader from "../UI/Loader/Loader";
-import BooksItem from "./BooksItem";
+import BookCard from "./BookCard";
 
 const Books: FC = () => {
-    const {books, totalItems, loading} = useAppSelector(state => state.books)
-
+    const {books, totalItems, loading, error} = useAppSelector(state => state.books)
 
     return (
-        <>
-            <p style={{textAlign: 'center', marginTop: '15px'}}>Найдено {totalItems} книг</p>
-            <div className={styles.books}>
-                {loading
-                    ? <Loader/>
-                    : books.map(book => <BooksItem key={book.id} book={book}/>)}
+        <div className={styles.books}>
+            {error
+                ? <p className={styles.books__text}>Error</p>
+                : <p className={styles.books__text}>Найдено {totalItems} книг</p>}
 
+            {loading && <Loader/>}
+            <div className={styles.books__list}>
+                {books.map(book => <BookCard key={book.id} book={book}/>)}
             </div>
-        </>
+        </div>
     );
 };
 

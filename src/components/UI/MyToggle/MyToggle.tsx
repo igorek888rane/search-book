@@ -1,12 +1,11 @@
 import {FC} from 'react';
 import styles from './myToggle.module.scss'
-import {sortByType} from "../../../store/slice/sort/sortType";
 
 
 interface myToggleProps {
-    fn: (select: any) => void
+    fn: (select: string) => void
     toggleActive: string
-    toggles: sortByType[]
+    toggles: string[]
 }
 
 const MyToggle: FC<myToggleProps> = ({fn, toggleActive, toggles}) => {

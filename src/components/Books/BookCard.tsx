@@ -7,20 +7,20 @@ interface BooksItemProps {
     book: IBook
 }
 
-const BooksItem: FC<BooksItemProps> = ({book}) => {
+const BookCard: FC<BooksItemProps> = ({book}) => {
 
     return (
-        <div className={styles.books__item}>
+        <div className={styles.book__item}>
             <Link to={`/${book.id}`} className={styles.book}>
                 <img src={book.volumeInfo.imageLinks?.thumbnail} alt="Book"/>
-                <p className={styles.books__tittle}>{book.volumeInfo.title}</p>
+                <p className={styles.book__tittle}>{book.volumeInfo.title}</p>
             </Link>
-            <p className={styles.books__text}>
+            <p className={styles.book__text}>
                 {book.volumeInfo.categories?.length
                     ? book.volumeInfo.categories[0]
                     : ''}</p>
 
-            <p className={styles.books__text}>{book.volumeInfo.authors?.length
+            <p className={styles.book__text}>{book.volumeInfo.authors?.length
                 ? book.volumeInfo.authors.join(', ')
                 : book.volumeInfo.authors}</p>
 
@@ -28,4 +28,4 @@ const BooksItem: FC<BooksItemProps> = ({book}) => {
     );
 };
 
-export default BooksItem;
+export default BookCard;
