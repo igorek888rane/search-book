@@ -9,6 +9,7 @@ export interface BooksState {
     loading: boolean
     totalItems: number
     error: string
+    errorOneBook: string
 }
 
 const initialState: BooksState = {
@@ -17,7 +18,8 @@ const initialState: BooksState = {
     filters: 'all',
     loading: false,
     totalItems: 0,
-    error: ''
+    error: '',
+    errorOneBook: ''
 
 }
 
@@ -58,7 +60,7 @@ export const booksSlice = createSlice({
         })
         builder.addCase(fetchOneBook.rejected, (state) => {
             state.loading = false
-            state.error = 'Error'
+            state.errorOneBook = 'Error'
         })
     }
 })

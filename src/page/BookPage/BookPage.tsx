@@ -5,12 +5,14 @@ import {useAppDispatch, useAppSelector} from "../../hook/useApp";
 import {fetchOneBook} from "../../store/slice/books/booksAsyncThunk";
 import Loader from "../../components/UI/Loader/Loader";
 import MyButton from "../../components/UI/MyButton/MyButton";
+import Book from "../../components/Book/Book";
 
 const BookPage: FC = () => {
     const {id} = useParams()
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const {book, error, loading} = useAppSelector(state => state.books)
+    const {book, errorOneBook, loading} = useAppSelector(state => state.books)
+
     useEffect(() => {
         if (id) {
             dispatch(fetchOneBook(id))
@@ -18,14 +20,13 @@ const BookPage: FC = () => {
 
     }, [])
 
+
     return (
         <div className={styles.book__page}>
-            <MyButton type={'button'} onClick={() => navigate('/')}>Back</MyButton>
             {loading && <Loader/>}
-            {error
-                ? <h1 style={{textAlign: 'center'}}>Error</h1>
-                : book?.volumeInfo?.title}
-
+            <MyButton type={'button'} onClick={() => navigate('/')}>Back</MyButton>
+            {errorOneBook && <h1>Error</h1>}
+            {book.id && <Book book={book}/>}
         </div>
     );
 };
