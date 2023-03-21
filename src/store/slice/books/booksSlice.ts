@@ -4,23 +4,20 @@ import {fetchBooks, fetchOneBook} from "./booksAsyncThunk";
 
 export interface BooksState {
     books: IBook[]
-    book: IBook
+    book: IBook | null
     filters: filtersType
     loading: boolean
     totalItems: number
     error: string
-    errorOneBook: string
 }
 
 const initialState: BooksState = {
     books: [],
-    book: {} as IBook,
+    book: null,
     filters: 'all',
     loading: false,
     totalItems: 0,
     error: '',
-    errorOneBook: ''
-
 }
 
 export const booksSlice = createSlice({
@@ -30,6 +27,12 @@ export const booksSlice = createSlice({
         setFilter(state, action: PayloadAction<filtersType>) {
             state.filters = action.payload
         },
+        setBookClear(state) {
+            state.book = null
+        },
+        setError(state, action: PayloadAction<string>) {
+            state.error = action.payload
+        }
     },
     extraReducers(builder) {
         builder.addCase(fetchBooks.pending, (state) => {
@@ -60,11 +63,11 @@ export const booksSlice = createSlice({
         })
         builder.addCase(fetchOneBook.rejected, (state) => {
             state.loading = false
-            state.errorOneBook = 'Error'
+            state.error = 'Error'
         })
     }
 })
 
-export const {setFilter} = booksSlice.actions
+export const {setFilter, setBookClear,setError} = booksSlice.actions
 
 export default booksSlice.reducer
