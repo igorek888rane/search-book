@@ -3,9 +3,9 @@ import {booksApi, getOneBook, IBooksApi} from "../../../api/booksApi";
 
 export const fetchBooks = createAsyncThunk(
     'books/fetchBooks',
-    async ({search, sortBy}: IBooksApi, thunkAPI) => {
+    async ({search, sortBy, startIndex,maxResult}: IBooksApi, thunkAPI) => {
         try {
-            return await booksApi({search, sortBy})
+            return await booksApi({search, sortBy, startIndex,maxResult})
         } catch (e) {
             return thunkAPI.rejectWithValue("Не удалось найти книги")
         }

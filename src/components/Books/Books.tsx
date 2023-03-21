@@ -17,6 +17,7 @@ const Books: FC = () => {
             <div className={styles.books__list}>
                 {books.map(book => <BookCard key={book.id} book={book}/>)}
             </div>
+                <div className={styles.book__load}></div>
         </div>
     );
 };

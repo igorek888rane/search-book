@@ -1,11 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {filtersType, IBook} from "./booksType";
+import {IBook} from "./booksType";
 import {fetchBooks, fetchOneBook} from "./booksAsyncThunk";
 
 export interface BooksState {
     books: IBook[]
     book: IBook | null
-    filters: filtersType
     loading: boolean
     totalItems: number
     error: string
@@ -14,7 +13,6 @@ export interface BooksState {
 const initialState: BooksState = {
     books: [],
     book: null,
-    filters: 'all',
     loading: false,
     totalItems: 0,
     error: '',
@@ -24,9 +22,6 @@ export const booksSlice = createSlice({
     name: 'books',
     initialState,
     reducers: {
-        setFilter(state, action: PayloadAction<filtersType>) {
-            state.filters = action.payload
-        },
         setBookClear(state) {
             state.book = null
         },
@@ -41,14 +36,7 @@ export const booksSlice = createSlice({
         builder.addCase(fetchBooks.fulfilled, (state, {payload}) => {
             state.totalItems = payload.totalItems
             state.loading = false
-            if (state.filters === 'all') {
-                state.books = payload.items
-                return
-            }
-            state.books = payload.items
-                .filter(book => book.volumeInfo.categories
-                    ?.map(el => el.toLowerCase())
-                    .includes(state.filters))
+            state.books.push(...payload.items)
         })
         builder.addCase(fetchBooks.rejected, (state) => {
             state.loading = false
@@ -68,6 +56,6 @@ export const booksSlice = createSlice({
     }
 })
 
-export const {setFilter, setBookClear,setError} = booksSlice.actions
+export const {setBookClear, setError} = booksSlice.actions
 
 export default booksSlice.reducer

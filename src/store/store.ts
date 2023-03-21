@@ -1,11 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import books from './slice/books/booksSlice'
-import sort from './slice/sort/sortSlice'
+import form from './slice/form/formSlice'
 
 export const store = configureStore({
     reducer: {
         books,
-        sort
+        form
     }
 })
 

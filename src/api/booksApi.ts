@@ -1,11 +1,13 @@
 import axios from "axios";
-import {sortByType} from "../store/slice/sort/sortType";
+import {sortByType} from "../store/slice/form/formType";
 import {IBook} from "../store/slice/books/booksType";
 
 
 export interface IBooksApi {
     search: string
     sortBy: sortByType
+    startIndex: number
+    maxResult:number
 }
 
 export interface IData {
@@ -16,8 +18,10 @@ export interface IData {
 
 const API = 'https://www.googleapis.com/books/v1/volumes'
 
-export const booksApi = async ({search, sortBy}: IBooksApi) => {
-    const {data} = await axios.get<IData>(`${API}?q=${search}&maxResults=30&orderBy=${sortBy}&key=${process.env.REACT_APP_API_KEY}`)
+export const booksApi = async ({search, sortBy, startIndex,maxResult}: IBooksApi) => {
+    const {data} = await axios
+        .get<IData>
+        (`${API}?q=${search}&startIndex=${startIndex}&maxResults=${maxResult}&orderBy=${sortBy}&key=${process.env.REACT_APP_API_KEY}`)
     return data
 }
 

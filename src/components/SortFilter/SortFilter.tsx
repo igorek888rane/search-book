@@ -2,15 +2,14 @@ import {FC} from 'react';
 import styles from './sortFilter.module.scss'
 import MyToggle from "../UI/MyToggle/MyToggle";
 import {useAppDispatch, useAppSelector} from "../../hook/useApp";
-import {setSortBy} from "../../store/slice/sort/sortSlice";
-import {sortByType} from "../../store/slice/sort/sortType";
+import {setFilter, setSortBy} from "../../store/slice/form/formSlice";
+import {sortByType} from "../../store/slice/form/formType";
 import MySelect from "../UI/MeSelect/MySelect";
 import {filtersType} from "../../store/slice/books/booksType";
-import {setFilter} from "../../store/slice/books/booksSlice";
 
 const SortFilter: FC = () => {
     const dispatch = useAppDispatch()
-    const {sortBy} = useAppSelector(state => state.sort)
+    const {sortBy} = useAppSelector(state => state.form)
 
     return (
         <div className={styles.sort_filter}>
