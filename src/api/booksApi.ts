@@ -20,3 +20,8 @@ export const booksApi = async ({search, sortBy}: IBooksApi) => {
     const {data} = await axios.get<IData>(`${API}?q=${search}&maxResults=30&orderBy=${sortBy}&key=${process.env.REACT_APP_API_KEY}`)
     return data
 }
+
+export const getOneBook = async (id: string) => {
+    const {data} = await axios.get<IBook>(`${API}/${id}?key=${process.env.REACT_APP_API_KEY}`)
+    return data
+}

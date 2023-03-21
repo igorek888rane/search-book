@@ -1,9 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {filtersType, IBook} from "./booksType";
-import {fetchBooks} from "./booksAsyncThunk";
+import {fetchBooks, fetchOneBook} from "./booksAsyncThunk";
 
 export interface BooksState {
     books: IBook[]
+    book: IBook
     filters: filtersType
     loading: boolean
     totalItems: number
@@ -12,6 +13,7 @@ export interface BooksState {
 
 const initialState: BooksState = {
     books: [],
+    book: {} as IBook,
     filters: 'all',
     loading: false,
     totalItems: 0,
@@ -25,7 +27,7 @@ export const booksSlice = createSlice({
     reducers: {
         setFilter(state, action: PayloadAction<filtersType>) {
             state.filters = action.payload
-        }
+        },
     },
     extraReducers(builder) {
         builder.addCase(fetchBooks.pending, (state) => {
@@ -44,6 +46,17 @@ export const booksSlice = createSlice({
                     .includes(state.filters))
         })
         builder.addCase(fetchBooks.rejected, (state) => {
+            state.loading = false
+            state.error = 'Error'
+        })
+        builder.addCase(fetchOneBook.pending, (state) => {
+            state.loading = true
+        })
+        builder.addCase(fetchOneBook.fulfilled, (state, {payload}) => {
+            state.book = payload
+            state.loading = false
+        })
+        builder.addCase(fetchOneBook.rejected, (state) => {
             state.loading = false
             state.error = 'Error'
         })

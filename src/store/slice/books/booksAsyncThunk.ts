@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {booksApi, IBooksApi} from "../../../api/booksApi";
+import {booksApi, getOneBook, IBooksApi} from "../../../api/booksApi";
 
 export const fetchBooks = createAsyncThunk(
     'books/fetchBooks',
@@ -11,3 +11,11 @@ export const fetchBooks = createAsyncThunk(
         }
     }
 )
+
+export const fetchOneBook = createAsyncThunk('books/fetchOneBook', async (id: string, thunkAPI) => {
+    try {
+        return await getOneBook(id)
+    } catch (e) {
+        return thunkAPI.rejectWithValue("Не удалось найти книгу")
+    }
+})
