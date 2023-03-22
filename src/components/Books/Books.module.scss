@@ -1,59 +1,58 @@
-@import "src/styles/variable";
+@import 'src/styles/variable';
 
 .books {
-  //display: flex;
-  //justify-content: center;
-  //flex-direction: column;
-  .books__text {
-    margin: 15px 0;
-    text-align: center;
-  }
+	//display: flex;
+	//justify-content: center;
+	//flex-direction: column;
+	.books__text {
+		margin: 15px 0;
+		text-align: center;
+	}
 
-  .books__list {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    grid-gap: 10px;
-    padding: 30px 0 10px 0;
+	.books__list {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		grid-gap: 10px;
+		padding: 30px 0 10px 0;
 
-    .book__item {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      flex-basis: 30%;
-      grid-gap: 15px;
-      padding: 15px;
-      background-color: $colorContainer;
-      cursor: pointer;
-      text-align: center;
+		.book__item {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			flex-basis: 30%;
+			grid-gap: 15px;
+			padding: 15px;
+			background-color: $colorContainer;
+			cursor: pointer;
+			text-align: center;
 
-      .book {
-        .book__tittle {
-          font-weight: 600;
-          color: $colorEl;
-          margin-top: 15px;
-        }
+			.book {
+				.book__tittle {
+					font-weight: 600;
+					color: $colorEl;
+					margin-top: 15px;
+				}
 
-        img {
-          box-shadow: $shadowImg
-        }
-      }
+				img {
+					box-shadow: $shadowImg;
+				}
+			}
 
-      .book__text {
-        color: grey;
-        font-size: 0.85em;
-      }
+			.book__text {
+				color: grey;
+				font-size: 0.85em;
+			}
+		}
+	}
 
+	.book__btn {
+		display: flex;
+		justify-content: center;
 
-    }
-
-  }
- .book__btn{
-   display: flex;
-   justify-content: center;
-   button{
-     margin-bottom: 15px;
-   }
- }
+		button {
+			margin-bottom: 15px;
+		}
+	}
 }
