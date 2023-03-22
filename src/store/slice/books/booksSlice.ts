@@ -27,6 +27,9 @@ export const booksSlice = createSlice({
         },
         setError(state, action: PayloadAction<string>) {
             state.error = action.payload
+        },
+        setBooksClear(state) {
+           state.books = []
         }
     },
     extraReducers(builder) {
@@ -56,6 +59,6 @@ export const booksSlice = createSlice({
     }
 })
 
-export const {setBookClear, setError} = booksSlice.actions
+export const {setBookClear, setError,setBooksClear} = booksSlice.actions
 
 export default booksSlice.reducer

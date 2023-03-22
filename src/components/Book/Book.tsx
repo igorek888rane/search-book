@@ -17,14 +17,12 @@ const Book: FC<BookProps> = ({book}) => {
             <div className={styles.book__info}>
                 <p className={styles.book__text}>{book.volumeInfo.title}</p>
                 <p className={styles.book__text}>
-                    {book.volumeInfo.categories?.length
-                        ? book.volumeInfo.categories.join(', ')
-                        : ''}</p>
+                    {book.volumeInfo.categories?.length && book.volumeInfo.categories.join(', ')}</p>
                 <p className={styles.book__text}>
                     {book.volumeInfo.authors?.length
                         ? book.volumeInfo.authors.join(', ')
                         : book.volumeInfo.authors}</p>
-                <p className={styles.book__text}>{parser
+                <p className={styles.book__text}>{book.volumeInfo.description && parser
                     .parseFromString(book.volumeInfo.description, 'text/html')
                     .body.textContent}</p>
             </div>

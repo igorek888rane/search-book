@@ -1,6 +1,9 @@
 @import "src/styles/variable";
 
 .books {
+  //display: flex;
+  //justify-content: center;
+  //flex-direction: column;
   .books__text {
     margin: 15px 0;
     text-align: center;
@@ -11,7 +14,7 @@
     flex-flow: row wrap;
     justify-content: center;
     grid-gap: 10px;
-    padding: 30px 0 5px 0;
+    padding: 30px 0 10px 0;
 
     .book__item {
       display: flex;
@@ -46,8 +49,11 @@
     }
 
   }
-  .book__load{
-    width: 0;
-    height: 0;
-  }
+ .book__btn{
+   display: flex;
+   justify-content: center;
+   button{
+     margin-bottom: 15px;
+   }
+ }
 }
