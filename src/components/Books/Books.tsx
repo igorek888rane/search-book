@@ -6,7 +6,7 @@ import BookCard from './BookCard'
 import MyButton from '../UI/MyButton/MyButton'
 import { setStartIndex } from '../../store/slice/form/formSlice'
 import { fetchBooks } from '../../store/slice/books/booksAsyncThunk'
-import { useFilterBook } from '../../hook/useHooks'
+import { useFilterBook } from '../../hook/useFilter'
 
 const Books: FC = () => {
 	const { books, totalItems, loading, error } = useAppSelector(

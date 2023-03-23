@@ -9,16 +9,19 @@ import { setBooksClear } from '../../store/slice/books/booksSlice'
 
 const Form: FC = () => {
 	const dispatch = useAppDispatch()
-	const { sortBy, startIndex, maxResult } = useAppSelector(
-		state => state.form
-	)
+	const { sortBy, maxResult } = useAppSelector(state => state.form)
 	const [searchValue, setSearchValue] = useState('')
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		dispatch(setStartIndex(0))
 		dispatch(setBooksClear())
 		dispatch(
-			fetchBooks({ search: searchValue, sortBy, startIndex, maxResult })
+			fetchBooks({
+				search: searchValue,
+				sortBy,
+				startIndex: 0,
+				maxResult,
+			})
 		)
 		setSearchValue('')
 		dispatch(setSearch(searchValue))

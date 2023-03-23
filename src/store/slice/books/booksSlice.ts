@@ -35,6 +35,7 @@ export const booksSlice = createSlice({
 	extraReducers(builder) {
 		builder.addCase(fetchBooks.pending, state => {
 			state.loading = true
+			state.error = ''
 		})
 		builder.addCase(fetchBooks.fulfilled, (state, { payload }) => {
 			state.totalItems = payload.totalItems
@@ -47,6 +48,7 @@ export const booksSlice = createSlice({
 		})
 		builder.addCase(fetchOneBook.pending, state => {
 			state.loading = true
+			state.error = ''
 		})
 		builder.addCase(fetchOneBook.fulfilled, (state, { payload }) => {
 			state.book = payload
